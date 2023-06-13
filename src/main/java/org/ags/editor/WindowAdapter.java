@@ -4,14 +4,18 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.kotcrab.vis.ui.VisUI;
 
 public class WindowAdapter extends ApplicationAdapter {
 
-	SpriteBatch batch;
-	Texture img;
+	private SpriteBatch batch;
+	private Texture img;
 
 	@Override
 	public void create() {
+
+		VisUI.load();
+
 		batch = new SpriteBatch();
 		img = new Texture("assets/badlogic.jpg");
 	}
