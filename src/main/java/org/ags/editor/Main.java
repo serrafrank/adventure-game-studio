@@ -2,26 +2,21 @@ package org.ags.editor;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.ags.editor.configuration.EditorConfiguration;
+import org.ags.editor.view.WindowAdapter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
+@RequiredArgsConstructor
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
-    private static final int WIDTH = Math.max((int) (Lwjgl3ApplicationConfiguration.getDisplayMode().width * 0.75),
-        1920 / 2);
-    private static final int HEIGHT = Math.max((int) (Lwjgl3ApplicationConfiguration.getDisplayMode().height * 0.75),
-        1080 / 2);
-
     private final EditorConfiguration editorConfiguration;
-
-    public Main(EditorConfiguration editorConfiguration) {
-        this.editorConfiguration = editorConfiguration;
-    }
+    private final WindowAdapter windowAdapter;
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
@@ -31,17 +26,20 @@ public class Main implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.debug("Starting application with configuration: {}", editorConfiguration);
 
-        Lwjgl3ApplicationConfiguration config = getLwjgl3ApplicationConfiguration();
-        log.debug("Application configuration: width={}, height={}", WIDTH, HEIGHT);
-        new Lwjgl3Application(new WindowAdapter(), config);
+        new Lwjgl3Application(windowAdapter, createConfig());
     }
 
-    private Lwjgl3ApplicationConfiguration getLwjgl3ApplicationConfiguration() {
+
+    private Lwjgl3ApplicationConfiguration createConfig() {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-        config.setTitle(editorConfiguration.getTitle() + " - " + editorConfiguration.getVersion());
-        config.setResizable(true);
-        config.useVsync(true);
-        config.setWindowedMode(WIDTH, HEIGHT);
+        config.setTitle(editorConfiguration.getWindowTitle() + " - V" + editorConfiguration.getVersion());
+        config.setWindowedMode(editorConfiguration.getWindowWidth(), editorConfiguration.getWindowHeight());
+        config.setIdleFPS(60);
+        config.setForegroundFPS(editorConfiguration.getForegroundFPS());
+        config.useVsync(false);
+        config.useVsync(false);
+        //  config.setInitialVisible(false);
+        //  config.setMaximized(true);
         return config;
     }
 }
