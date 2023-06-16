@@ -2,10 +2,10 @@ package org.ags.editor.publisher.events;
 
 public interface Event<D> {
 
-    String getName();
+    EventId id();
 
-    D getData();
+    D data();
 
-    Class<?> getSource();
+    Class<?> source();
 
 }

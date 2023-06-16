@@ -24,8 +24,8 @@ public class EditorConfiguration {
     private Integer foregroundFPS;
 
     private Integer windowWidth = Math.max((int) (Lwjgl3ApplicationConfiguration.getDisplayMode().width * 0.75),
-        1920 / 2);
+            1920 / 2);
     private Integer windowHeight = Math.max((int) (Lwjgl3ApplicationConfiguration.getDisplayMode().height * 0.75),
-        1080 / 2);
+            1080 / 2);
 
 }

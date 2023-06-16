@@ -1,10 +1,13 @@
 package org.ags.editor.publisher;
 
-public enum APIMessage {
-    START_APP, CREATE, RESIZE, PAUSE, RESUME;
+import org.ags.editor.publisher.events.EventId;
+import org.ags.editor.publisher.events.GenericEventId;
 
-    @Override
-    public String toString() {
-        return getClass() + "." + name();
-    }
+public class APIMessage {
+    public static final EventId START_APP = new GenericEventId("START_APP");
+    public static final EventId CREATE = new GenericEventId("CREATE");
+    public static final EventId RESIZE = new GenericEventId("RESIZE");
+    public static final EventId PAUSE = new GenericEventId("PAUSE");
+    public static final EventId RESUME = new GenericEventId("RESUME");
+
 }
