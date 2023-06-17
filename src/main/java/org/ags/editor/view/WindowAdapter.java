@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import lombok.RequiredArgsConstructor;
-import org.ags.editor.publisher.APIMessage;
-import org.ags.editor.publisher.EventPublisher;
+import org.ags.editor.events.APIMessage;
+import org.ags.editor.events.publisher.EventPublisher;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

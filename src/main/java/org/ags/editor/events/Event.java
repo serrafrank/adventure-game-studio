@@ -1,4 +1,5 @@
-package org.ags.editor.publisher.events;
+package org.ags.editor.events;
+
 
 public interface Event<D> {
 

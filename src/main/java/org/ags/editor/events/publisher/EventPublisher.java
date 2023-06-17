@@ -1,9 +1,8 @@
-package org.ags.editor.publisher;
+package org.ags.editor.events.publisher;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.ags.editor.publisher.events.Event;
-import org.ags.editor.publisher.events.*;
+import org.ags.editor.events.*;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +28,10 @@ public class EventPublisher {
 
     public void publish(String id) {
         publish(new Notification<>(new GenericEventId(id), EventData.EMPTY, getSource()));
+    }
+
+    public <T> void publish(String id, T data) {
+        publish(new Notification<>(new GenericEventId(id), data, getSource()));
     }
 
     public void publish(Event<?> event) {

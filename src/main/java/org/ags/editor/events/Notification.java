@@ -1,4 +1,4 @@
-package org.ags.editor.publisher.events;
+package org.ags.editor.events;
 
 public record Notification<D>(
         EventId id,

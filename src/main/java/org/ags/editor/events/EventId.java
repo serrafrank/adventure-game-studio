@@ -1,4 +1,4 @@
-package org.ags.editor.publisher.events;
+package org.ags.editor.events;
 
 public interface EventId {
 
@@ -6,5 +6,6 @@ public interface EventId {
 
     String toString();
 
+    boolean equals(Object o);
 
 }
