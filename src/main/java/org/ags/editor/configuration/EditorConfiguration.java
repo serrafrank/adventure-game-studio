@@ -22,6 +22,8 @@ public class EditorConfiguration {
     private String version;
 
     private Integer foregroundFPS;
+    private String uiSkinFile;
+    private String uiSkinAtlasFile;
 
     private Integer windowWidth = Math.max((int) (Lwjgl3ApplicationConfiguration.getDisplayMode().width * 0.75),
             1920 / 2);
